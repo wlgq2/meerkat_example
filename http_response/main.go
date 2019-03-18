@@ -49,7 +49,7 @@ func main() {
 	})
 	server.GET("/null", func(context *meerkat.Context) error{
 		return  context.NoContent(http.StatusOK)
-	});
+	})
 	server.GET("/redirect", func(context *meerkat.Context) error{
 		return  context.Redirect(http.StatusMovedPermanently,"string")
 	})
