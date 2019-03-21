@@ -6,15 +6,11 @@ import (
 	"net/http"
 )
 
-type JsonTest struct {
-	Num int  `json:"num"`
-	Str string `json:"str"`
+type TestData struct {
+	Num int  `json:"num" xml:"num"`
+	Str string `json:"str" xml:"str"`
 }
 
-type XmlTest struct {
-	Num int `xml:"num"`
-	Str string `xml:"str"`
-}
 
 func main() {
 	server := meerkat.New()
@@ -22,7 +18,7 @@ func main() {
 		return  context.String(http.StatusOK,"hello world!")
 	})
 	server.GET("/json", func(context *meerkat.Context) error{
-		resp := JsonTest{1024,"test..."}
+		resp := TestData{1024,"test..."}
 		return  context.JSON(http.StatusOK,resp)
 	})
 	server.GET("/jsonblob", func(context *meerkat.Context) error{
@@ -30,7 +26,7 @@ func main() {
 		return  context.JSONBlob(http.StatusOK,[]byte(resp))
 	})
 	server.GET("/jsonp", func(context *meerkat.Context) error{
-		resp := JsonTest{1024,"test..."}
+		resp := TestData{1024,"test..."}
 		return  context.JSONP(http.StatusOK,"callback",resp)
 	})
 	server.GET("/html", func(context *meerkat.Context) error{
@@ -40,7 +36,7 @@ func main() {
 		return  context.HTML(http.StatusOK,html)
 	})
 	server.GET("/xml", func(context *meerkat.Context) error{
-		resp := XmlTest{1024,"test..."}
+		resp := TestData{1024,"test..."}
 		return  context.XML(http.StatusOK,resp)
 	})
 	server.GET("/xmlblob", func(context *meerkat.Context) error{
