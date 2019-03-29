@@ -2,18 +2,9 @@ package main
 
 import (
 	"github.com/wlgq2/meerkat"
-	"html/template"
-	"io"
 	"net/http"
 )
 
-type Template struct {
-	templates *template.Template
-}
-
-func (template *Template) Render(writer io.Writer, name string, data interface{}, context *meerkat.Context) error {
-	return template.templates.ExecuteTemplate(writer, name, data)
-}
 
 func main() {
 	server := meerkat.New()
