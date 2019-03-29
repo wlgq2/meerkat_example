@@ -52,6 +52,15 @@ func main() {
 	server.GET("/file", func(context *meerkat.Context) error{
 		return  context.File("test.png")
 	})
+	//中间件
+	rst := ""
+	server.GET("/middleware", func (context *meerkat.Context) error {
+		return context.String(http.StatusOK, rst)
+	},
+	func( handler meerkat.HttpHandler) meerkat.HttpHandler{
+		rst ="middleware test."
+		return handler
+	})
 	err := server.Start(":8002")
 	fmt.Println(err)
 }
