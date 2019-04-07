@@ -15,19 +15,19 @@ func main() {
 /* commond:
 	curl \
 	  -X POST \
-	  http://192.168.1.101:8001/ \
+	  http://127.0.0.1:8001/ \
 	  -H 'Content-Type: application/json' \
 	  -d '{"name":"test","value":"test"}'
 
 	curl \
 	  -X POST \
-	  http://192.168.1.101:8001/ \
+	  http://127.0.0.1:8001/ \
 	  -d 'name=test' \
 	  -d 'value=test'
 
 	curl \
 	  -X GET \
-	  http://192.168.1.101:8001/\?name\=test\&value\=test
+	  http://127.0.0.1:8001/\?name\=test\&value\=test
 */
 	server.GET("/*" ,func(context *meerkat.Context) (err error) {
 		test := new(Test)
